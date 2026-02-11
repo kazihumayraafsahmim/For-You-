@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Everlasting Valentine · cinematic love story</title>
+    <!-- Fonts & Icons (FontAwesome via CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Font for elegant handwriting / romantic touch -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ✦✦ MUSIC / AUDIO BUTTON ✦✦ -->
+    <div class="music-control" id="musicControl">
+        <i class="fas fa-music" id="musicIcon"></i>
+        <span id="musicText">Play love song</span>
+    </div>
+
+    <!-- ✦✦ FLOATING HEARTS & PARTICLES CANVAS (background) ✦✦ -->
+    <canvas id="floatingCanvas"></canvas>
+
+    <!-- ✦✦ MAIN WRAPPER ✦✦ -->
+    <div class="valentine-wrapper">
+
+        <!-- 1) ROMANTIC LANDING SECTION -->
+        <section class="landing glass-card">
+            <div class="landing-content">
+                <h1 class="main-title">Happy Valentine My Love ❤️</h1>
+                <!-- ANIMATED LOVE QUOTE with typewriter effect -->
+                <p class="typewriter-quote" id="typewriterText"></p>
+                <!-- BUTTON → reveals timeline smoothly -->
+                <button class="glow-button" id="loveStoryBtn">✨ Click to See My Love Story ✨</button>
+            </div>
+            <div class="parallax-heart" aria-hidden="true">❤️</div>
+        </section>
+
+        <!-- 2) PHOTO GALLERY / SLIDER (CUTE GLOW) -->
+        <section class="gallery-section" id="gallery">
+            <h2 class="section-title"><span class="heart-deco"><i class="fas fa-heart"></i></span> our precious moments <span class="heart-deco"><i class="fas fa-heart"></i></span></h2>
+            <div class="slider-container glass-card">
+                <div class="slider-track" id="sliderTrack">
+                    <!-- 
+                        ================================================
+                        ❤️  EDIT PHOTOS HERE: REPLACE image URLs below ❤️ 
+                        ================================================
+                    -->
+                    <div class="slide"><img src="assets/1.jpeg" alt="First date" class="glow-img"></div>
+                    <div class="slide"><img src="assets/2.jpeg" alt="Selfie" class="glow-img"></div>
+                    <div class="slide"><img src="assets/3.jpeg" alt="Sunset" class="glow-img"></div>
+                    <div class="slide"><img src="assets/4.jpeg" alt="Coffee" class="glow-img"></div>
+                    <div class="slide"><img src="assets/5.jpeg" alt="Adventure" class="glow-img"></div>
+                    <!-- ADD MORE SLIDES AS NEEDED, just copy .slide img -->
+                </div>
+                <!-- slider navigation -->
+                <button class="slider-btn prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+                <div class="slider-dots" id="sliderDots"></div>
+            </div>
+        </section>
+
+        <!-- 3) LOVE MESSAGE SECTION: typewriter / letter box -->
+        <section class="message-section">
+            <h2 class="section-title"><i class="fas fa-feather-alt"></i> a letter for you <i class="fas fa-feather-alt"></i></h2>
+            <div class="love-letter glass-card">
+                <!-- 
+                    ============================================
+                    ✍️ EDIT YOUR PERSONAL MESSAGE BELOW ✍️ 
+                    ============================================
+                -->
+                <div id="handwritingMessage" class="handwriting"></div>
+                <p class="signature">yours forever, <span class="romantic-name">[Your Name]</span> ❤️</p>
+            </div>
+        </section>
+
+        <!-- 4) TIMELINE / MEMORY SECTION (ICONS, MILESTONES) -->
+        <section class="timeline-section" id="timeline">
+            <h2 class="section-title"><i class="fas fa-clock"></i> our love timeline <i class="fas fa-clock"></i></h2>
+            <div class="timeline glass-card">
+                <!-- 
+                    ============================================
+                    📅 EDIT YOUR MILESTONES BELOW (dates & text)
+                    ============================================
+                -->
+                <div class="timeline-event left">
+                    <div class="event-icon"><i class="fas fa-hand-peace"></i></div>
+                    <div class="event-content">
+                        <h3>first chat</h3>
+                        <span class="event-date"> March 13, 2025</span>
+                        <p>we sent the first “hi” and never stopped ❤️</p>
+                    </div>
+                </div>
+                <div class="timeline-event left">
+                    <div class="event-icon"><i class="fas fa-kiss-wink-heart"></i></div>
+                    <div class="event-content">
+                        <h3>official</h3>
+                        <span class="event-date">june 15, 2025</span>
+                        <p> we became ours.</p>
+                    </div>
+                </div>
+                <div class="timeline-event right">
+                    <div class="event-icon"><i class="fas fa-globe"></i></div>
+                    <div class="event-content">
+                        <h3>first trip</h3>
+                        <span class="event-date">Nov 9 2025</span>
+                        <p> your hand in my hand.</p>
+                    </div>
+                </div>
+                <!-- add more events as needed -->
+            </div>
+        </section>
+
+        <!-- 5) SURPRISE SECTION: HIDDEN BUTTON + POPUP / HEART EXPLOSION -->
+        <section class="surprise-section">
+            <button class="surprise-btn" id="surpriseBtn">💝 tap for a surprise 💝</button>
+            <!-- hidden popup / modal (glassmorphism) -->
+            <div class="popup-overlay" id="popupOverlay">
+                <div class="popup-box glass-card">
+                    <div class="heart-explosion" id="heartExplosion">❤️❤️❤️</div>
+                    <h2>i love you! ❤️</h2>
+                    <p>to the moon and back, always.</p>
+                    <button class="close-popup" id="closePopup"><i class="fas fa-times-circle"></i> close</button>
+                </div>
+            </div>
+            <!-- floating hearts generated by canvas, but extra burst via JS -->
+        </section>
+
+        <!-- 7) FOOTER - GLOWING HEARTS & ROMANTIC ENDING -->
+        <footer class="romantic-footer">
+            <div class="glowing-hearts">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+            </div>
+            <p>every love story is beautiful, but ours is my favorite 💕</p>
+            <p class="footer-small">✨ always yours, forever & always ✨</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
